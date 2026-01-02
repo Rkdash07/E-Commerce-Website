@@ -1,0 +1,14 @@
+{
+  "name": "e-commerce-vercel",
+  "version": "1.0.0",
+  "description": "E-Commerce application deployed on Vercel",
+  "scripts": {
+    "build": "echo 'No build step required for PHP'"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
+

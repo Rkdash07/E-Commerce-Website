@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Database files
+databases/
+*.sql
+
+# Upload directories (these should use external storage on Vercel)
+admin/UploadImg/
+client/UploadImg/
+
+# Development files
+.git/
+.vscode/
+.idea/
+
+# Environment files (use Vercel dashboard for env vars)
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# XAMPP specific
+xampp/
+

@@ -25,18 +25,20 @@ $body = "
 $mail = new PHPMailer(true);
 
 try {
-    // SMTP configuration
+    // SMTP configuration - uses environment variables for Vercel deployment
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';  // SMTP server (use yours)
+    $mail->Host = getenv('SMTP_HOST') ?: 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'rupeshkumardash1@gmail.com';        // Your SMTP username
-    $mail->Password = 'wcwb dchz ehxi raxs';              // Your SMTP password or app password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;       // Encryption (TLS)
-    $mail->Port = 587;
+    $mail->Username = getenv('SMTP_USER') ?: 'rupeshkumardash1@gmail.com';
+    $mail->Password = getenv('SMTP_PASSWORD') ?: 'wcwb dchz ehxi raxs';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = (int)(getenv('SMTP_PORT') ?: 587);
 
     // Sender and recipient info
-    $mail->setFrom('rupeshkumardash1@gmail.com', 'RupeshMart');
-    $mail->addAddress($customerEmail);                        // Recipient from billing email
+    $fromEmail = getenv('SMTP_FROM_EMAIL') ?: 'rupeshkumardash1@gmail.com';
+    $fromName = getenv('SMTP_FROM_NAME') ?: 'RupeshMart';
+    $mail->setFrom($fromEmail, $fromName);
+    $mail->addAddress($customerEmail);
 
     // Email content
     $mail->isHTML(true);
